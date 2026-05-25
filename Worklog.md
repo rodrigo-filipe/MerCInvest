@@ -54,5 +54,27 @@ Feito isto eu ía traduzir o enunciado para inglês, no entanto tive um plano.
 
 De modo a não ter uma decomentação em portugês e uma em inglês no mesmo sitio, tornando muito confusa a navegaçao, tenciono fazer dois branches, o main branch vai estar em ingles, uma vez que e considerada a linguagem internacional e depois crio um branch chamado pt / pt translation (vou pensar no nome) em que a documentaçao vai estar na minha lingua nativa. Esta informaçao vai estar no [README](/README.md) de modo a que qualquer portuges saiba que pode ler isto sem ter de pagar cursos caros de ingles.
 
+### Fazer codigo
+
+Tendo o meu repositorio criado, vamos fazer o mais importante, o projeto.
+
+Abri o codespace apelidado de expert-waddle:
+
+![expert-waddle](images/expert_waddle.png)
+
+(representação do chat gpt)
+
+#### Extenções utilizadas
+
+De seguida adicionei todas as extenções que costumo usar na criação de programas em C:.
+
++ [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
++ [C/C++ DevTools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpp-devtools)
++ [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
++ [C/C++ Themes](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-themes)
++ [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
++ [Makefile Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools)
++ [C/C++ Project Generator](https://marketplace.visualstudio.com/items?itemName=danielpinto8zz6.c-cpp-project-generator)
+
 ---
 
