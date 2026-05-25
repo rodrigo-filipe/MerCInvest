@@ -1,5 +1,9 @@
 # Linguagens de Programação 1 2025/2026
 
+## Informação
+
+Projeto feito no ambito da cadeira de Linguagens de programação 1, da faculdade [ULHT](https://www.linkedin.com/school/universidade-lusofona-de-humanidades-e-tecnologias/posts/?feedView=all) lecionada pelo professor [Daniel 'Pai Mau' Silveira](https://www.linkedin.com/in/daniel-silveira-725a6551/)
+
 ## Projeto Final – Mercado & Investimento (Listas em C)
 
 O prazo de entrega é dia 8 de Junho de 2026 às 23h00.
