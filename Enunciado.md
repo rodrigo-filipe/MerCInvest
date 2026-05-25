@@ -79,7 +79,7 @@ Q;BBB;20250102;19;19;19;19;100
 
 Os ficheiros no formato CSV usados pelo Pandora serão disponibilizados no moodle.
 
-### 2) MODE FUNC (Testes do Pandora)
+## 2) MODE FUNC (Testes do Pandora)
 
 O primeiro comando enviado pelo Pandora pelo `stdin` é o MODE, neste caso MODE FUNC:
 
@@ -97,7 +97,7 @@ END
 
 Tu tens de garantir que o *output é exatamente igual* ao formato pedido aqui, sem "prompts" `tipo Opcao:` ou menus.
 
-#### 2.1 LOAD – Carregar ficheiro cumulativo
+### 2.1 LOAD – Carregar ficheiro cumulativo
 
 ```
 LOAD mercado.csv
@@ -109,7 +109,7 @@ OK
 + Se a empresa não existir, cria-a.
 + Se não conseguir abrir o ficheiro, escreve ERROR 1.
 
-#### 2.2 COMPANY.LIST – Listar empresas
+### 2.2 COMPANY.LIST – Listar empresas
 
 ```
 COMPANY.LIST
@@ -122,7 +122,7 @@ Formato: `ticker;nome;sector;quotes_count` (ordenado por ticker).
 
 Se for carregada uma cotação já existente (mesmo ticker e mesma data), deve ser aplicada a mesma regra do QUOTE.ADD (desvalorização de 1%), não devendo ser criado um novo nó.
 
-#### 2.3 QUOTE.LIST – Listar cotações
+### 2.3 QUOTE.LIST – Listar cotações
 
 Imprime só o `day` e o `close` (com 2 casas decimais).
 
@@ -143,7 +143,7 @@ QUOTES BBB 1
 
 Se o ticker não existir: `ERROR 2`.
 
-#### 2.4 QUOTE.ADD – Adicionar cotação (Regra do Duplicado)
+### 2.4 QUOTE.ADD – Adicionar cotação (Regra do Duplicado)
 
 ```
 QUOTE.ADD BBB 20250103 18 18 18 18 100
@@ -154,7 +154,7 @@ OK
 Se a empresa não existir: `ERROR 3`.
 Se os dados da empresa forem inseridos incorretamente `ERROR 3`.
 
-#### 2.5 QUOTE.REMOVE e QUOTE.REMOVE.RANGE – Apagar
+### 2.5 QUOTE.REMOVE e QUOTE.REMOVE.RANGE – Apagar
 
 Apagar um dia:
 
@@ -172,7 +172,7 @@ REMOVED 2
 
 (Nota: Se os limites vierem ao contrário, deves trocá-los internamente e executar na mesma).
 
-#### 2.6 COMPANY.ADD / COMPANY.EDIT / COMPANY.REMOVE
+### 2.6 COMPANY.ADD / COMPANY.EDIT / COMPANY.REMOVE
 
 + **COMPANY.ADD CCC EmpresaC Finance** -> Sucesso imprime `OK`. Se já existir: `ERROR 4`.
 + **COMPANY.EDIT CCC NovoNome NovoSector** -> Sucesso imprime `OK`. Se não existir: `ERROR 5`.
@@ -180,7 +180,7 @@ REMOVED 2
     
 **Regra:** Ao remover uma empresa, tens de apagar também todas as cotações dela (libertar a memória da lista interna).
 
-#### 2.7 MARKET.PURGE.BANKRUPT – Remover "Falidas"
+### 2.7 MARKET.PURGE.BANKRUPT – Remover "Falidas"
 
 Se uma empresa tiver pelo menos 6 cotações no seu histórico e os últimos 6 closes (ordenados por data) forem estritamente a descer (`c1 > c2 > c3 > c4 > c5 > c6`), ela faliu.
 
@@ -193,7 +193,7 @@ MARKET.PURGE.BANKRUPT
 REMOVED CCC
 ```
 
-#### 2.8 INVEST.SUGGEST – Sugestões de Investimento
+### 2.8 INVEST.SUGGEST – Sugestões de Investimento
 
 O Pandora vai pedir sugestões de compra para 5 empresas consoante um valor e uma estratégia:
 
@@ -229,7 +229,7 @@ EEE;5
 
 Empresas sem qualquer cotação não devem ser consideradas nas estratégias de investimento.
 
-### 3) Avaliação
+## 3) Avaliação
 
 Para aprovação na disciplina é necessária uma classificação superior a 10 valores na plataforma Pandora.
 
@@ -258,7 +258,7 @@ A taxa aproveitamento é um valor entre 0.33 e 0.60 dependente do aproveitamento
 As taxas de aproveitamento com respetivo cálculo serão publicadas no dia 7 de Junho 2026, sendo uma combinação dos registos dos testes, quizzes e classping.
 
 Existo então a possibilidade de nota superior 20, essas serão atribuídas o valor 20.
-### 4) Código Base Fornecido (`main.c`)
+## 4) Código Base Fornecido (`main.c`)
 
 Para garantirmos que usas estruturas dinâmicas e que o teu output não falha no Pandora por causa de espaços esquecidos, `deves usar obrigatoriamente` este código base para os teus structs, headers e prints:
 
@@ -320,7 +320,7 @@ typedef struct {
 #endif
 ```
 
-### 5) Compilação
+## 5) Compilação
 
 O programa deve compilar com:
 
@@ -328,7 +328,7 @@ O programa deve compilar com:
 gcc -Wall -Wextra -Werror -lc main.c
 ```
 
-### 6) INDEX dos testes
+## 6) INDEX dos testes
 
 Este índice serve para o aluno perceber rapidamente o objetivo de cada teste.
 Como ler os nomes
@@ -337,7 +337,7 @@ Como ler os nomes
 + `Exx_...` = teste escondido, sem diff
 + `Pxx_...` = testes de `MODE Pandora`
 
-#### 1. Arranque e erros básicos
+### 1. Arranque e erros básicos
 
 + `F01_load_missing_file`
 + `F02_company_list_empty_market`
@@ -346,7 +346,7 @@ Como ler os nomes
 + `F30_misspelled_command_quote_lista`
 + `F31_quote_list_invalid_all_token`
 
-#### 2. LOAD e listagens
+### 2. LOAD e listagens
 
 + `F03_load_basic_and_company_list`
 + `F04_quote_list_all_basic`
@@ -355,7 +355,7 @@ Como ler os nomes
 + `F07_load_cumulative_long_list`
 + `F33_quote_list_range_swapped_bounds_long_market`
 
-#### 3. Empresas
+### 3. Empresas
 
 + `F08_company_add_success`
 + `F09_company_add_duplicate`
@@ -367,7 +367,7 @@ Como ler os nomes
 + `F34_company_add_middle_of_long_list`
 + `F35_company_remove_middle_of_long_list`
 
-#### 4. Cotações
+### 4. Cotações
 
 + `F14_quote_add_success`
 + `F15_quote_add_missing_ticker`
@@ -380,61 +380,61 @@ Como ler os nomes
 + `F37_quote_remove_missing_day`
 + `F38_quote_add_duplicate_long_market`
 
-#### 5. Falência
+### 5. Falência
 
 + `F21_bankrupt_triggered_by_quote_add`
 + `F22_bankrupt_triggered_during_load`
 
-#### 6. Investimento
+### 6. Investimento
 
 + `F23_invest_suggest_strategy_1`
 + `F24_invest_suggest_strategy_2`
 + `F25_invest_suggest_strategy_3`
 + `F26_invest_suggest_tie_breaker`
 
-#### 7. Pandora
+### 7. Pandora
 
 + `P01_pandora_missing_market_file`
 + `P02_pandora_success_basic`
 
-##### Agrupamento por funcionalidade**
+#### Agrupamento por funcionalidade
 
-###### LOAD / COMPANY.LIST
+##### LOAD / COMPANY.LIST
 
 + `F01, F02, F03, F07, F22`
 + `E22`
 
-###### QUOTE.LIST
+##### QUOTE.LIST
 
 + `F04, F05, F06, F31, F33`
 + `E31, E33`
 
-###### COMPANY.ADD / COMPANY.EDIT / COMPANY.REMOVE
+##### COMPANY.ADD / COMPANY.EDIT / COMPANY.REMOVE
 
 + `F08, F09, F10, F11, F12, F13, F32, F34, F35`
 + `E10, E11, E12, E13, E32, E34, E35`
 
-###### QUOTE.ADD
+##### QUOTE.ADD
 
 + `F14, F15, F16, F36, F38`
 + `E14, E15, E16, E36, E38`
 
-###### QUOTE.REMOVE / QUOTE.REMOVE.RANGE
+##### QUOTE.REMOVE / QUOTE.REMOVE.RANGE
 
 + `F17, F18, F19, F20, F37`
 + `E17, E18, E19, E20, E37`
 
-###### BANKRUPT
+##### BANKRUPT
 
 + `F21, F22`
 + `E21, E22`
 
-###### INVEST.SUGGEST
+##### INVEST.SUGGEST
 
 + `F23, F24, F25, F26`
 + `E23, E24`
 
-###### Robustez / parsing
+##### Robustez / parsing
 
 + `F27, F28, F29, F30, F31`
 + `E27, E28, E29, E30, E31`
