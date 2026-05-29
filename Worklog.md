@@ -54,7 +54,7 @@ Feito isto eu ía traduzir o enunciado para inglês, no entanto tive um plano.
 
 De modo a não ter uma decomentação em portugês e uma em inglês no mesmo sitio, tornando muito confusa a navegaçao, tenciono fazer dois branches, o main branch vai estar em ingles, uma vez que e considerada a linguagem internacional e depois crio um branch chamado pt / pt translation (vou pensar no nome) em que a documentaçao vai estar na minha lingua nativa. Esta informaçao vai estar no [README](/README.md) de modo a que qualquer portuges saiba que pode ler isto sem ter de pagar cursos caros de ingles.
 
-### Fazer codigo
+### Criação do ambiente de desenvolvimento
 
 Tendo o meu repositorio criado, vamos fazer o mais importante, o projeto.
 
@@ -62,7 +62,7 @@ Abri o codespace apelidado de expert-waddle:
 
 ![expert-waddle](images/expert_waddle.png)
 
-(representação do chat gpt)
+> representação do chat gpt
 
 #### Extenções utilizadas
 
@@ -75,6 +75,72 @@ De seguida adicionei todas as extenções que costumo usar na criação de progr
 + [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
 + [Makefile Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools)
 + [C/C++ Project Generator](https://marketplace.visualstudio.com/items?itemName=danielpinto8zz6.c-cpp-project-generator)
+
+#### Criação da estrutura do projeto
+
+Tendo as extenções necessarias no meu codespace, era hora de criar a estrutura do projeto, tranalho esse facilitado pela extenção [C/C++ Project Generator](https://marketplace.visualstudio.com/items?itemName=danielpinto8zz6.c-cpp-project-generator) que utilizando o Quick Access do VS code e escrevendo `> Create C project` ele gera automaticamento a estrutura correta para um projeto nesta linguagem.
+
+#### Codigo inicial
+
+Como dito no enunciado, é obrigatorio utilizar o codigo dado pelo professor, de modo a que todos os alunos usem a mesma estrutura de lista ligada. Alem disso, uma vez que o pandora e muito piquinhas com os prints, para verificar se estao corretos, e nos dados uns macros para nos facilitar.
+
+```
+#ifndef MARKET_H
+#define MARKET_H
+
+#define MAX_TICKER 11 // 10 chars + \0
+#define MAX_NAME 51   // 50 chars + \0
+#define MAX_SECTOR 31 // 30 chars + \0
+
+/* --- ESTRUTURAS OBRIGATÓRIAS --- */
+
+// Nó da lista de cotações
+typedef struct QuoteNode {
+    int day; // Formato YYYYMMDD
+    float open;
+    float high;
+    float low;
+    float close;
+    int volume;
+    struct QuoteNode* next;
+} QuoteNode;
+
+// Nó da lista de empresas
+typedef struct CompanyNode {
+    char ticker[MAX_TICKER];
+    char name[MAX_NAME];
+    char sector[MAX_SECTOR];
+    int quotes_count;
+    QuoteNode* quotes_head; // Cabeça da lista ligada de cotações
+    struct CompanyNode* next;
+} CompanyNode;
+
+// Estrutura principal do Mercado
+typedef struct {
+    CompanyNode* companies_head; // Cabeça da lista ligada de empresas
+    int company_count;
+} Market;
+
+
+/* --- MACROS DE PRINTF PARA O PANDORA --- */
+// Usa estas macros no teu código .c para garantir que os testes não falham por causa de formatação!
+
+#define PRINT_OK()                  printf("OK\n")
+#define PRINT_ERROR(code)           printf("ERROR %d\n", code)
+#define PRINT_ERROR_PANDORA()       printf("ERROR PANDORA\n")
+#define PRINT_COMPANIES_HEADER(n)   printf("COMPANIES %d\n", n)
+#define PRINT_COMPANY(t, n, s, c)   printf("%s;%s;%s;%d\n", t, n, s, c)
+#define PRINT_QUOTES_HEADER(t, n)   printf("QUOTES %s %d\n", t, n)
+#define PRINT_QUOTE(d, c)           printf("%08d;%.2f\n", d, c)
+#define PRINT_REMOVED(n)            printf("REMOVED %d\n", n)
+#define PRINT_BANKRUPT(n)           printf("REMOVED %s\n", n)
+#define PRINT_SUGGEST_HEADER(n)     printf("SUGGESTION %d\n", n)
+#define PRINT_SUGGESTION(t, q)      printf("%s;%d\n", t, q)
+
+#endif
+```
+
+
 
 ---
 
